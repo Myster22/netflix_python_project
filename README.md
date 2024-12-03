@@ -15,6 +15,4 @@ The data for this project is sourced from the Kaggle dataset:
 ## Business Problems and Solutions
 ### 1. Different types of content
 ```python
-def greet():
     df["type"].unique()
-greet()
