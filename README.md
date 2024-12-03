@@ -34,6 +34,7 @@ The data for this project is sourced from the Kaggle dataset:
     country_counts = df_exploded['country'].value_counts()
     top_5_countries = country_counts.head(5)
 ```
+![country]()
 ### 5. Analyzing the popular genre
 ```python
     df_clean = df.dropna(subset=['listed_in']).copy()  # Remove rows where listed_in is Null or missing values
