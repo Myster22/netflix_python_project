@@ -21,7 +21,7 @@ The data for this project is sourced from the Kaggle dataset:
 ```python
     count = df["type"].value_counts()
 ```
-![count][https://github.com/Myster22/netflix_python_project/blob/main/count_movies_tv.jpeg]
+![count](https://github.com/Myster22/netflix_python_project/blob/main/count_movies_tv.jpeg)
 ### 3. Identifying the most common ratings for movies and TV shows
 ```python
     most_common_rating = df.groupby('type')['rating'].agg(lambda x: x.mode()[0]).reset_index()
