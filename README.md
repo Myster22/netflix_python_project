@@ -1,4 +1,4 @@
-# Data Analysis of Netflix content
+# Data Analysis of Netflix content using Python
 ![Netflix logo](https://github.com/Myster22/netflix_python_project/blob/main/logo.png)
 ## Objective
 - Analyze the different types of content
