@@ -26,6 +26,7 @@ The data for this project is sourced from the Kaggle dataset:
 ```python
     most_common_rating = df.groupby('type')['rating'].agg(lambda x: x.mode()[0]).reset_index()
 ```
+![common rating](https://github.com/Myster22/netflix_python_project/blob/main/most_common_rating.jpeg)
 ### 4. Analyzing the distribution of content by country
 ```python
     df_cleaned = df.dropna(subset=['country']).copy()  # Remove rows where country is Null or missing values
@@ -34,7 +35,7 @@ The data for this project is sourced from the Kaggle dataset:
     country_counts = df_exploded['country'].value_counts()
     top_5_countries = country_counts.head(5)
 ```
-![country]()
+![country](https://github.com/Myster22/netflix_python_project/blob/main/countries.jpeg)
 ### 5. Analyzing the popular genre
 ```python
     df_clean = df.dropna(subset=['listed_in']).copy()  # Remove rows where listed_in is Null or missing values
@@ -43,6 +44,7 @@ The data for this project is sourced from the Kaggle dataset:
     genre_counts = df_explode['listed_in'].value_counts()
     top_5_genre = genre_counts.head(5)
 ```
+![genre](https://github.com/Myster22/netflix_python_project/blob/main/genre.jpeg)
 ### 6. Analyzing the top cast for a specific country
 ```python
     df_clean = df.dropna(subset=['country', 'cast']).copy()
@@ -53,6 +55,7 @@ The data for this project is sourced from the Kaggle dataset:
     india_data = india_data.explode('cast_clean')
     top_cast = india_data['cast_clean'].value_counts().head(10)
 ```
+![cast](https://github.com/Myster22/netflix_python_project/blob/main/actor.jpeg)
 ### 7. Analyzing the top directors
 ```python
     df_clean = df.dropna(subset=['director']).copy()
@@ -62,6 +65,7 @@ The data for this project is sourced from the Kaggle dataset:
     top_directors.columns = ['Director', 'Content Count']
     display(top_directors.head(5))
 ```
+![director](https://github.com/Myster22/netflix_python_project/blob/main/director.jpeg)
 ### 8. Analyzing the release patterns 
 ```python
     release_year_counts = df_clean['release_year'].value_counts().sort_index()
@@ -70,6 +74,8 @@ The data for this project is sourced from the Kaggle dataset:
     movies_by_year = movies['release_year'].value_counts().sort_index()
     tv_shows_by_year = tv_shows['release_year'].value_counts().sort_index()
 ```
+![release patterns overall](https://github.com/Myster22/netflix_python_project/blob/main/content_count_by_release_year.jpeg)
+![movies vs tvshows](https://github.com/Myster22/netflix_python_project/blob/main/movies_vs_tvshows_by_release_year.jpeg)
 ## Findings and Conclusion
 - **Content Distribution**: The dataset contains a diverse range of movies and TV shows with varying ratings and genres.
 - **Common Ratings**: Insights into the most common ratings provide an understanding of the content's target audience.
