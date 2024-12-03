@@ -16,4 +16,5 @@ The data for this project is sourced from the Kaggle dataset:
 ### 1. Different types of content
 ```python
     df["type"].unique()
+```python
 ### 2.Compare the types of  content
