@@ -68,6 +68,18 @@ The data for this project is sourced from the Kaggle dataset:
     movies_by_year = movies['release_year'].value_counts().sort_index()
     tv_shows_by_year = tv_shows['release_year'].value_counts().sort_index()
 ```
-```
+## Findings and Conclusion
+- **Content Distribution**: The dataset contains a diverse range of movies and TV shows with varying ratings and genres.
+- **Common Ratings**: Insights into the most common ratings provide an understanding of the content's target audience.
+- **Geographical Insights**: This insights help us to know where people are watching more of the contents and retain and grow the base                                of audience.
+- **Top Casts**: Like in our analysis we chose India to filter out top cast in India.So, we can collaborate with this cast and market 
+                 our content and website to grow our customer base.
+- **Top Directors**: This insights will help us to improve our content by collaborating with best directors.
+- **Release Patterns**: By This insights we can know seasonal trends ,binge Watching Trends and balance between Movies and TV Shows.
+## Recommendations
+- Partner with high-performing regions and talents.
+- Create content in popular genres with a focus on popular casts.
+- Focus on modern, region-specific, and contents which connects with people.
+
     
 
