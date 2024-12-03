@@ -20,13 +20,54 @@ The data for this project is sourced from the Kaggle dataset:
 ### 2. Compare the types of  content
 ```python
     count = df["type"].value_counts()
-    counts_df = count.reset_index()
-    counts_df.columns = ['Type', 'Count']
-    sns.barplot(x='Type', y='Count', data=counts_df, palette='pastel', hue='Type', dodge=False, legend=False)
-    plt.title('Count of Movies and TV Shows')
-    plt.xlabel('Type')
-    plt.ylabel('Count')
-    for index, row in counts_df.iterrows():
-    plt.text(index, row['Count'], str(row['Count']), ha='center', va='bottom')
-    plt.show()
 ```
+### 3. Identifying the most common ratings for movies and TV shows
+```python
+    most_common_rating = df.groupby('type')['rating'].agg(lambda x: x.mode()[0]).reset_index()
+```
+### 4. Analyzing the distribution of content by country
+```python
+    df_cleaned = df.dropna(subset=['country']).copy()  # Remove rows where country is Null or missing values
+    df_cleaned['country'] = df_cleaned['country'].str.split(',')
+    df_exploded = df_cleaned.explode('country')
+    country_counts = df_exploded['country'].value_counts()
+    top_5_countries = country_counts.head(5)
+```
+### 5. Analyzing the popular genre
+```python
+    df_clean = df.dropna(subset=['listed_in']).copy()  # Remove rows where listed_in is Null or missing values
+    df_clean['listed_in'] = df_clean['listed_in'].str.split(',')
+    df_explode = df_clean.explode('listed_in')
+    genre_counts = df_explode['listed_in'].value_counts()
+    top_5_genre = genre_counts.head(5)
+```
+### 6. Analyzing the top cast for a specific country
+```python
+    df_clean = df.dropna(subset=['country', 'cast']).copy()
+    df_clean['country_clean'] = df_clean['country'].apply(lambda x: [country.strip() for country in str(x).split(',')])
+    df_clean = df_clean.explode('country_clean')
+    india_data = df_clean[df_clean['country_clean'] == 'India'].copy()
+    india_data['cast_clean'] = india_data['cast'].apply(lambda x: [actor.strip() for actor in str(x).split(',')])
+    india_data = india_data.explode('cast_clean')
+    top_cast = india_data['cast_clean'].value_counts().head(10)
+```
+### 7. Analyzing the top directors
+```python
+    df_clean = df.dropna(subset=['director']).copy()
+    df_clean['director'] = df_clean['director'].apply(lambda x: [country.strip() for country in str(x).split(',')])
+    df_clean = df_clean.explode('director')
+    top_directors = df_clean['director'].dropna().value_counts().reset_index()
+    top_directors.columns = ['Director', 'Content Count']
+    display(top_directors.head(5))
+```
+### 8. Analyzing the release patterns 
+```python
+    release_year_counts = df_clean['release_year'].value_counts().sort_index()
+    movies = df_clean[df_clean['type'] == 'Movie']
+    tv_shows = df_clean[df_clean['type'] == 'TV Show']
+    movies_by_year = movies['release_year'].value_counts().sort_index()
+    tv_shows_by_year = tv_shows['release_year'].value_counts().sort_index()
+```
+```
+    
+
