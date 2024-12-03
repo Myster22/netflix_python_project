@@ -17,4 +17,16 @@ The data for this project is sourced from the Kaggle dataset:
 ```python
     df["type"].unique()
 ```
-### 2.Compare the types of  content
+### 2. Compare the types of  content
+```python
+    count = df["type"].value_counts()
+    counts_df = count.reset_index()
+    counts_df.columns = ['Type', 'Count']
+    sns.barplot(x='Type', y='Count', data=counts_df, palette='pastel', hue='Type', dodge=False, legend=False)
+    plt.title('Count of Movies and TV Shows')
+    plt.xlabel('Type')
+    plt.ylabel('Count')
+    for index, row in counts_df.iterrows():
+    plt.text(index, row['Count'], str(row['Count']), ha='center', va='bottom')
+    plt.show()
+```
