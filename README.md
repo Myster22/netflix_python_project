@@ -16,6 +16,5 @@ The data for this project is sourced from the Kaggle dataset:
 ### 1. Different types of content
 ```python
 def greet():
-    print("Hello, World!")
-
+    df["type"].unique()
 greet()
